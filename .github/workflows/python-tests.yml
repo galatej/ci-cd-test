@@ -18,7 +18,7 @@ jobs:
     env:
       CONFIG_USERNAME: ${{ secrets.CONFIG_USERNAME }}
       CONFIG_PASSWORD: ${{ secrets.CONFIG_PASSWORD }}
-      DATABASE: ${{ github.event.inputs.database }}
+      DATABASE: ${{ github.event.inputs.database || 'misight_v15_dev' }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
