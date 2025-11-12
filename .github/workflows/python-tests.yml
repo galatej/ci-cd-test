@@ -38,4 +38,4 @@ jobs:
         run: cat tests/test_config.json
 
       - name: Run pytest
-        run: PYTHONPATH=$PWD pytest tests/test_sample.py
+        run: PYTHONPATH=$PWD pytest -s tests/test_sample.py
