@@ -1,0 +1,5 @@
+{
+  "database": "${DATABASE}",
+  "username": "${CONFIG_USERNAME}",
+  "password": "${CONFIG_PASSWORD}"
+}
