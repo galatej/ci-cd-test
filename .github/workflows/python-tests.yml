@@ -34,5 +34,8 @@ jobs:
       - name: Generate test_config.json from template
         run: cat tests/test_config.json.template | envsubst > tests/test_config.json
 
+      - name: Show generated test_config.json
+        run: cat tests/test_config.json
+
       - name: Run pytest
         run: PYTHONPATH=$PWD pytest tests/test_sample.py
