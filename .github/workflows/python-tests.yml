@@ -35,4 +35,4 @@ jobs:
         run: cat tests/test_config.json.template | envsubst > tests/test_config.json
 
       - name: Run pytest
-        run: pytest tests/test_sample.py
+        run: PYTHONPATH=src pytest tests/test_sample.py
