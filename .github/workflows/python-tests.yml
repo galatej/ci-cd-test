@@ -5,6 +5,12 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
+    inputs:
+      database:
+        description: 'Database name'
+        required: false
+        default: 'misight_v15_dev'
 
 jobs:
   test:
@@ -12,7 +18,7 @@ jobs:
     env:
       CONFIG_USERNAME: ${{ secrets.CONFIG_USERNAME }}
       CONFIG_PASSWORD: ${{ secrets.CONFIG_PASSWORD }}
-      DATABASE: misight_v15_dev
+      DATABASE: ${{ github.event.inputs.database }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,13 +29,10 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: pip install -r requirements.txt
 
       - name: Generate test_config.json from template
-        run: |
-          cat tests/test_config.json.template | envsubst > tests/test_config.json
+        run: cat tests/test_config.json.template | envsubst > tests/test_config.json
 
       - name: Run pytest
-        run: |
-          pytest tests/test_sample.py
+        run: pytest tests/test_sample.py
